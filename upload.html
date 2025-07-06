@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Upload</title>
+    <link rel="stylesheet" href="style/upload.css">
+    <link rel="shortcut icon" href="srcimg/college_logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="upload-container">
+        <div class="form-header">
+            <h1>📸 Media Upload</h1>
+            <p>Upload your photos and videos with event details</p>
+        </div>
+
+        <form id="mediaUploadForm" action="script/upload.php" method="POST" enctype="multipart/form-data">
+            <!-- Event Details Section -->
+            <div class="form-section">
+                <h3 class="section-title">📅 Event Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventName">Event Name *</label>
+                        <input type="text" id="eventName" name="eventName" placeholder="Enter event name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventMonth">Month *</label>
+                        <select id="eventMonth" name="eventMonth" required>
+                            <option value="">Select Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventYear">Year *</label>
+                        <select id="eventYear" name="eventYear" required>
+                            <option value="">Select Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventReason">Reason/Purpose *</label>
+                        <textarea id="eventReason" name="eventReason" placeholder="Describe the reason or purpose for this event..." required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="form-section">
+                <h3 class="section-title">📁 Media Files</h3>
+                
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📎</div>
+                    <div class="upload-text">Click to upload or drag and drop</div>
+                    <div class="upload-subtext">Images (JPG, PNG, GIF) and Videos (MP4, MOV, AVI) - Max 20MB per file</div>
+                    <input type="file" id="fileInput" name="mediaFiles[]" class="file-input" multiple accept="image/*,video/*">
+                </div>
+
+                <div class="file-stats" id="fileStats" style="display: none;">
+                    <div class="stat-item">
+                        <div class="stat-number" id="imageCount">0</div>
+                        <div class="stat-label">Images</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="videoCount">0</div>
+                        <div class="stat-label">Videos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalSize">0 MB</div>
+                        <div class="stat-label">Total Size</div>
+                    </div>
+                </div>
+
+                <div class="file-preview" id="filePreview"></div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                🚀 Upload Media
+            </button>
+            <button type="reset" onclick="resetForm()" class="submit-btn" id="submitBtn">
+                Reset
+            </button>
+        </form>
+        <div class="gallery-link">
+            <p>To visit Gallery<a> click here</a></p>
+        </div>
+    </div>
+
+
+    <script src="script/upload.js">
+        populateYears();
+    </script>
+</body>
+</html>

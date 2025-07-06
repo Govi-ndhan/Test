@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="icon" href="srcimg/college_logo.png" type="image/x-icon">
+    <script src="script/security.js"></script>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Login</h1>
+            <p>Please login to your account</p>
+        </div>
+
+        <form class="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="email">Username</label>
+                <input  
+                    id="email" 
+                    name="email" 
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter your password"
+                    required
+                >
+                <button type="button" class="password-toggle" onclick="togglePassword()">
+                    👁️
+                </button>
+            </div>
+
+            <div class="form-options hide">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <div class="form-group captcha-container">
+                <label for="captcha">Security Verification</label>
+                <div class="captcha-wrapper">
+                    <div class="captcha-display" id="captchaDisplay">
+                        <canvas id="captchaCanvas" width="200" height="60"></canvas>
+                        <button type="button" class="captcha-refresh" onclick="generateCaptcha()" title="Refresh CAPTCHA">
+                            🔄
+                        </button>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="captcha" 
+                        name="captcha" 
+                        placeholder="Enter the code shown above"
+                        required
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="divider hide">
+            <span>or continue with</span>
+        </div>
+
+        <div class="social-login hide">
+            <a href="#" class="social-btn">
+                <span>🔍</span> Google
+            </a>
+            <a href="#" class="social-btn">
+                <span>📘</span> Facebook
+            </a>
+        </div>
+
+        <div class="signup-link hide">
+            Don't have an account? <a href="#">Sign up here</a>
+        </div>
+    </div>
+
+    <script src="script/index.js"></script>
+</body>
+</html>
